@@ -10,10 +10,11 @@ OptionParser.parse! do |opts|
   end
 end
 
-server = HTTP::Server.new(bind, port) do |context|
+server = HTTP::Server.new do |context|
   context.response.content_type = "text/plain"
-  context.response << "Hello world, got #{context.request.path}"
+  context.response.print "Hello world, got #{context.request.path}"
 end
 
-puts "Listening on http://#{bind}:#{port}"
+address = server.bind_tcp 8080
+puts "Listening on http://#{address}"
 server.listen
