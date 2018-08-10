@@ -1,2 +1,2 @@
 require "spec"
-require "../src/heroku101"
+require "../src/heroku101/*"
